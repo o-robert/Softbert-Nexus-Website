@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Softbert Nexus Limited</title>
+  <meta name="description" content="Softbert Nexus Limited — Software Development, Client Resources & Tech Consulting." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- ── NAVBAR ── -->
+  <header class="navbar" id="navbar">
+    <div class="container navbar__inner">
+      <a href="#" class="navbar__logo" id="nav-logo">Softbert Nexus</a>
+      <nav class="navbar__links" id="nav-links">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a href="admin.html" class="navbar__admin-link">Admin</a>
+      </nav>
+      <div class="navbar__actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <span class="theme-toggle__icon">
+            <!-- Sun icon (light mode) -->
+            <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/>
+              <line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/>
+              <line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+            </svg>
+            <!-- Moon icon (dark mode) -->
+            <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+          </span>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <nav id="mobile-nav-links">
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a href="admin.html">Admin</a>
+    </nav>
+  </div>
+
+  <main>
+    <!-- ── HERO ── -->
+    <section class="hero" id="home">
+      <div class="hero__blobs" aria-hidden="true">
+        <div class="blob blob--1"></div>
+        <div class="blob blob--2"></div>
+        <div class="blob blob--3"></div>
+      </div>
+      <div class="container hero__inner">
+        <div class="hero__content">
+          <span class="badge" id="hero-badge">Software. Resources. Consulting.</span>
+          <h1 class="hero__title">
+            <span id="hero-title">We Build the Future,</span><br />
+            <span class="gradient-text" id="hero-title-highlight">One Line at a Time.</span>
+          </h1>
+          <p class="hero__subtitle" id="hero-subtitle">
+            Softbert Nexus Limited partners with companies to deliver world-class software solutions, curated developer resources, and expert consulting across the entire software development ecosystem.
+          </p>
+          <div class="hero__ctas">
+            <a href="#services" class="btn btn--primary" id="hero-cta-primary">Explore Our Services</a>
+            <a href="#contact" class="btn btn--ghost" id="hero-cta-secondary">Get in Touch</a>
+          </div>
+        </div>
+        <div class="hero__visual" aria-hidden="true">
+          <div class="code-card">
+            <div class="code-card__bar">
+              <span></span><span></span><span></span>
+            </div>
+            <pre class="code-card__body"><code><span class="c-purple">const</span> <span class="c-cyan">softbert</span> = {
+  <span class="c-amber">services</span>: [
+    <span class="c-green">"Software Dev"</span>,
+    <span class="c-green">"Resources"</span>,
+    <span class="c-green">"Consulting"</span>,
+  ],
+  <span class="c-amber">mission</span>: <span class="c-green">"Build the future"</span>,
+  <span class="c-amber">deliver</span>: () <span class="c-purple">=&gt;</span> <span class="c-cyan">excellence</span>,
+};</code></pre>
+          </div>
+        </div>
+      </div>
+      <div class="hero__scroll-hint" aria-hidden="true">
+        <span>Scroll to explore</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+      </div>
+    </section>
+
+    <!-- ── SERVICES ── -->
+    <section class="services section" id="services">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-label" id="services-label">What We Do</p>
+          <h2 class="section-title" id="services-heading">Three pillars.<br /><span class="gradient-text">Endless possibilities.</span></h2>
+        </div>
+        <div class="services__grid" id="services-grid">
+          <!-- Rendered by main.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ── ABOUT ── -->
+    <section class="about section" id="about">
+      <div class="container">
+        <div class="about__inner">
+          <div class="about__text">
+            <p class="section-label" id="about-label">About Softbert Nexus</p>
+            <h2 class="section-title" id="about-heading">More than a<br /><span class="gradient-text">software company.</span></h2>
+            <p class="about__body" id="about-body"></p>
+          </div>
+          <div class="about__right">
+            <div class="stats-grid" id="stats-grid">
+              <!-- Rendered by main.js -->
+            </div>
+            <div class="values-grid" id="values-grid">
+              <!-- Rendered by main.js -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CONTACT ── -->
+    <section class="contact section" id="contact">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-label">Contact</p>
+          <h2 class="section-title" id="contact-heading"><span class="gradient-text">Let's Build Together</span></h2>
+          <p class="section-sub" id="contact-subheading">Have a project in mind or just want to explore options? We'd love to hear from you.</p>
+        </div>
+        <div class="contact__inner">
+          <div class="contact__info">
+            <div class="contact__info-item">
+              <span class="contact__info-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </span>
+              <span id="contact-email">hello@softbertnexus.com</span>
+            </div>
+            <div class="contact__info-item">
+              <span class="contact__info-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </span>
+              <span id="contact-phone">+1 (555) 000-0000</span>
+            </div>
+            <div class="contact__info-item">
+              <span class="contact__info-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </span>
+              <span id="contact-address">Softbert Nexus Limited, Lagos, Nigeria</span>
+            </div>
+          </div>
+          <form class="contact__form" id="contactForm" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="form-name" id="label-name">Your Name</label>
+                <input type="text" id="form-name" placeholder="John Doe" required />
+              </div>
+              <div class="form-group">
+                <label for="form-email" id="label-email">Email Address</label>
+                <input type="email" id="form-email" placeholder="john@example.com" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="form-subject" id="label-subject">Subject</label>
+              <input type="text" id="form-subject" placeholder="How can we help?" />
+            </div>
+            <div class="form-group">
+              <label for="form-message" id="label-message">Message</label>
+              <textarea id="form-message" rows="5" placeholder="Tell us about your project..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn--primary btn--full" id="form-submit">Send Message</button>
+            <p class="form-feedback" id="form-feedback" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a href="#" class="navbar__logo" id="footer-logo">Softbert Nexus</a>
+        <p id="footer-tagline">Building the future of software, together.</p>
+      </div>
+      <div class="footer__links">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a href="admin.html">Admin</a>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p id="footer-copyright">© 2024 Softbert Nexus Limited. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/content.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

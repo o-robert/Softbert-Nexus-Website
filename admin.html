@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin — Softbert Nexus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="admin-body">
+
+  <!-- ── LOGIN SCREEN ── -->
+  <div class="admin-login" id="loginScreen">
+    <div class="admin-login__card">
+      <div class="admin-login__logo">Softbert Nexus</div>
+      <p class="admin-login__subtitle">Content Admin Panel</p>
+      <p class="admin-login__error" id="loginError"></p>
+      <form id="loginForm" novalidate>
+        <div class="form-group" style="margin-bottom:16px; text-align:left">
+          <label for="adminPassword">Password</label>
+          <input type="password" id="adminPassword" placeholder="Enter admin password" autocomplete="current-password" />
+        </div>
+        <button type="submit" class="btn btn--primary btn--full">Login</button>
+      </form>
+      <p class="admin-login__pw-note">Default password: <strong>softbert2024</strong><br/>Change it in Settings after login.</p>
+    </div>
+  </div>
+
+  <!-- ── ADMIN PANEL ── -->
+  <div class="admin-wrap" id="adminWrap">
+
+    <!-- Sidebar -->
+    <aside class="admin-sidebar">
+      <div class="admin-sidebar__logo">Softbert Nexus <span style="font-weight:400;font-size:0.8rem;opacity:0.6">Admin</span></div>
+
+      <nav class="admin-nav" id="adminNav">
+        <div class="admin-nav__item is-active" data-section="nav">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          Navigation
+        </div>
+        <div class="admin-nav__item" data-section="hero">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg>
+          Hero
+        </div>
+        <div class="admin-nav__item" data-section="services">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+          Services
+        </div>
+        <div class="admin-nav__item" data-section="about">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          About
+        </div>
+        <div class="admin-nav__item" data-section="contact">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Contact
+        </div>
+        <div class="admin-nav__item" data-section="footer">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="22" x2="21" y2="22"/><path d="M5 22V8l7-6 7 6v14"/></svg>
+          Footer
+        </div>
+        <div class="admin-nav__item" data-section="settings">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          Settings
+        </div>
+      </nav>
+
+      <div class="admin-sidebar__footer">
+        <a href="index.html" target="_blank">← View Live Site</a>
+        <button id="logoutBtn">Log Out</button>
+      </div>
+    </aside>
+
+    <!-- Main content -->
+    <main class="admin-main">
+
+      <!-- NAV SECTION -->
+      <div class="admin-section is-active" id="section-nav">
+        <h1 class="admin-section__title">Navigation</h1>
+        <p class="admin-section__subtitle">Edit the navbar logo text and link labels.</p>
+        <div class="admin-card">
+          <div class="admin-field">
+            <label>Logo / Brand Name</label>
+            <input type="text" id="f-nav-logo" />
+          </div>
+        </div>
+        <div class="admin-save-bar">
+          <span class="admin-save-msg" id="msg-nav">✓ Saved</span>
+          <button class="btn btn--ghost" id="reset-nav" style="font-size:0.85rem;padding:10px 20px">Reset to Default</button>
+          <button class="btn btn--primary" id="save-nav" style="padding:10px 24px">Save Changes</button>
+        </div>
+      </div>
+
+      <!-- HERO SECTION -->
+      <div class="admin-section" id="section-hero">
+        <h1 class="admin-section__title">Hero Section</h1>
+        <p class="admin-section__subtitle">The main landing banner of the website.</p>
+        <div class="admin-card">
+          <div class="admin-field">
+            <label>Badge Text (top label)</label>
+            <input type="text" id="f-hero-badge" />
+          </div>
+          <div class="admin-field-row">
+            <div class="admin-field">
+              <label>Title Line 1</label>
+              <input type="text" id="f-hero-title" />
+            </div>
+            <div class="admin-field">
+              <label>Title Line 2 (gradient highlight)</label>
+              <input type="text" id="f-hero-titleHighlight" />
+            </div>
+          </div>
+          <div class="admin-field">
+            <label>Subtitle / Description</label>
+            <textarea id="f-hero-subtitle" rows="3"></textarea>
+          </div>
+          <div class="admin-field-row">
+            <div class="admin-field">
+              <label>Primary Button Text</label>
+              <input type="text" id="f-hero-ctaPrimary" />
+            </div>
+            <div class="admin-field">
+              <label>Secondary Button Text</label>
+              <input type="text" id="f-hero-ctaSecondary" />
+            </div>
+          </div>
+        </div>
+        <div class="admin-save-bar">
+          <span class="admin-save-msg" id="msg-hero">✓ Saved</span>
+          <button class="btn btn--ghost" id="reset-hero" style="font-size:0.85rem;padding:10px 20px">Reset to Default</button>
+          <button class="btn btn--primary" id="save-hero" style="padding:10px 24px">Save Changes</button>
+        </div>
+      </div>
+
+      <!-- SERVICES SECTION -->
+      <div class="admin-section" id="section-services">
+        <h1 class="admin-section__title">Services</h1>
+        <p class="admin-section__subtitle">Manage your service cards.</p>
+        <div class="admin-card">
+          <div class="admin-field-row">
+            <div class="admin-field">
+              <label>Section Heading</label>
+              <input type="text" id="f-services-heading" />
+            </div>
+            <div class="admin-field">
+              <label>Section Subheading</label>
+              <input type="text" id="f-services-subheading" />
+            </div>
+          </div>
+        </div>
+
+        <div id="services-editor"></div>
+
+        <button class="btn--add" id="add-service">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Add Service
+        </button>
+
+        <div class="admin-save-bar">
+          <span class="admin-save-msg" id="msg-services">✓ Saved</span>
+          <button class="btn btn--ghost" id="reset-services" style="font-size:0.85rem;padding:10px 20px">Reset to Default</button>
+          <button class="btn btn--primary" id="save-services" style="padding:10px 24px">Save Changes</button>
+        </div>
+      </div>
+
+      <!-- ABOUT SECTION -->
+      <div class="admin-section" id="section-about">
+        <h1 class="admin-section__title">About</h1>
+        <p class="admin-section__subtitle">Edit the about section content, stats, and values.</p>
+        <div class="admin-card">
+          <div class="admin-field-row">
+            <div class="admin-field">
+              <label>Section Heading</label>
+              <input type="text" id="f-about-heading" />
+            </div>
+            <div class="admin-field">
+              <label>Section Subheading</label>
+              <input type="text" id="f-about-subheading" />
+            </div>
+          </div>
+          <div class="admin-field">
+            <label>Body Text</label>
+            <textarea id="f-about-body" rows="6"></textarea>
+          </div>
+        </div>
+
+        <h3 style="font-size:1rem;font-weight:700;margin-bottom:16px;color:var(--text)">Stats</h3>
+        <div id="stats-editor"></div>
+
+        <h3 style="font-size:1rem;font-weight:700;margin:24px 0 16px;color:var(--text)">Values</h3>
+        <div id="values-editor"></div>
+
+        <div class="admin-save-bar">
+          <span class="admin-save-msg" id="msg-about">✓ Saved</span>
+          <button class="btn btn--ghost" id="reset-about" style="font-size:0.85rem;padding:10px 20px">Reset to Default</button>
+          <button class="btn btn--primary" id="save-about" style="padding:10px 24px">Save Changes</button>
+        </div>
+      </div>
+
+      <!-- CONTACT SECTION -->
+      <div class="admin-section" id="section-contact">
+        <h1 class="admin-section__title">Contact</h1>
+        <p class="admin-section__subtitle">Update contact details and form labels.</p>
+        <div class="admin-card">
+          <div class="admin-field-row">
+            <div class="admin-field">
+              <label>Section Heading</label>
+              <input type="text" id="f-contact-heading" />
+            </div>
+            <div class="admin-field">
+              <label>Subheading</label>
+              <input type="text" id="f-contact-subheading" />
+            </div>
+          </div>
+          <div class="admin-field-row">
+            <div class="admin-field">
+              <label>Email</label>
+              <input type="text" id="f-contact-email" />
+            </div>
+            <div class="admin-field">
+              <label>Phone</label>
+              <input type="text" id="f-contact-phone" />
+            </div>
+          </div>
+          <div class="admin-field">
+            <label>Address</label>
+            <input type="text" id="f-contact-address" />
+          </div>
+        </div>
+
+        <h3 style="font-size:1rem;font-weight:700;margin-bottom:16px;color:var(--text)">Form Labels</h3>
+        <div class="admin-card">
+          <div class="admin-field-row">
+            <div class="admin-field">
+              <label>Name Field Label</label>
+              <input type="text" id="f-fl-name" />
+            </div>
+            <div class="admin-field">
+              <label>Email Field Label</label>
+              <input type="text" id="f-fl-email" />
+            </div>
+          </div>
+          <div class="admin-field-row">
+            <div class="admin-field">
+              <label>Subject Field Label</label>
+              <input type="text" id="f-fl-subject" />
+            </div>
+            <div class="admin-field">
+              <label>Message Field Label</label>
+              <input type="text" id="f-fl-message" />
+            </div>
+          </div>
+          <div class="admin-field">
+            <label>Submit Button Text</label>
+            <input type="text" id="f-fl-submit" />
+          </div>
+        </div>
+
+        <div class="admin-save-bar">
+          <span class="admin-save-msg" id="msg-contact">✓ Saved</span>
+          <button class="btn btn--ghost" id="reset-contact" style="font-size:0.85rem;padding:10px 20px">Reset to Default</button>
+          <button class="btn btn--primary" id="save-contact" style="padding:10px 24px">Save Changes</button>
+        </div>
+      </div>
+
+      <!-- FOOTER SECTION -->
+      <div class="admin-section" id="section-footer">
+        <h1 class="admin-section__title">Footer</h1>
+        <p class="admin-section__subtitle">Edit the footer tagline and copyright text.</p>
+        <div class="admin-card">
+          <div class="admin-field">
+            <label>Tagline</label>
+            <input type="text" id="f-footer-tagline" />
+          </div>
+          <div class="admin-field">
+            <label>Copyright Text</label>
+            <input type="text" id="f-footer-copyright" />
+          </div>
+        </div>
+        <div class="admin-save-bar">
+          <span class="admin-save-msg" id="msg-footer">✓ Saved</span>
+          <button class="btn btn--ghost" id="reset-footer" style="font-size:0.85rem;padding:10px 20px">Reset to Default</button>
+          <button class="btn btn--primary" id="save-footer" style="padding:10px 24px">Save Changes</button>
+        </div>
+      </div>
+
+      <!-- SETTINGS SECTION -->
+      <div class="admin-section" id="section-settings">
+        <h1 class="admin-section__title">Settings</h1>
+        <p class="admin-section__subtitle">Manage admin password and site data.</p>
+        <div class="admin-card">
+          <h3 style="font-size:1rem;font-weight:700;margin-bottom:20px;color:var(--text)">Change Admin Password</h3>
+          <div class="admin-field">
+            <label>Current Password</label>
+            <input type="password" id="f-pw-current" />
+          </div>
+          <div class="admin-field-row">
+            <div class="admin-field">
+              <label>New Password</label>
+              <input type="password" id="f-pw-new" />
+            </div>
+            <div class="admin-field">
+              <label>Confirm New Password</label>
+              <input type="password" id="f-pw-confirm" />
+            </div>
+          </div>
+          <p class="admin-login__error" id="pw-change-msg" style="text-align:left;margin-top:4px"></p>
+          <button class="btn btn--primary" id="save-password" style="padding:10px 24px;margin-top:8px">Update Password</button>
+        </div>
+
+        <div class="admin-card" style="margin-top:24px">
+          <h3 style="font-size:1rem;font-weight:700;margin-bottom:12px;color:var(--text)">Danger Zone</h3>
+          <p style="font-size:0.88rem;color:var(--text-muted);margin-bottom:16px">Reset all content to factory defaults. This cannot be undone.</p>
+          <button class="btn--danger" id="reset-all" style="padding:10px 20px;border-radius:var(--radius-md)">Reset All Content to Defaults</button>
+        </div>
+
+        <div class="admin-card" style="margin-top:24px">
+          <h3 style="font-size:1rem;font-weight:700;margin-bottom:12px;color:var(--text)">Theme</h3>
+          <button class="btn btn--ghost" id="admin-theme-toggle" style="padding:10px 24px;font-size:0.88rem">Toggle Dark / Light Mode</button>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="js/content.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
