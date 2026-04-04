@@ -1,0 +1,142 @@
+.hero {
+  position: relative;
+  padding: 140px 0 96px;
+  overflow: hidden;
+}
+
+/* Subtle decorative background using solid sky blue tints — no gradients */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -120px;
+  right: -180px;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: rgba(14, 165, 233, 0.06);
+  pointer-events: none;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -80px;
+  left: -100px;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  background: rgba(14, 165, 233, 0.04);
+  pointer-events: none;
+}
+
+.hero__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 60px;
+}
+
+.hero__content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.hero__title {
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--text-primary);
+}
+
+.hero__highlight {
+  color: var(--sky-500);
+}
+
+.hero__subtitle {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  max-width: 520px;
+}
+
+.hero__ctas {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+/* ── Code card ── */
+.code-card {
+  border-radius: var(--radius-lg);
+  border: 1.5px solid var(--border);
+  background: var(--bg-card);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.code-card__bar {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-hover);
+}
+
+.dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+}
+.dot--red    { background: #ef4444; }
+.dot--yellow { background: #f59e0b; }
+.dot--green  { background: #22c55e; }
+
+.code-card__body {
+  padding: 24px;
+  font-family: 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+  font-size: 0.88rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  white-space: pre;
+  overflow-x: auto;
+}
+
+/* Syntax highlight tokens — sky blue palette */
+.t-keyword { color: var(--sky-400); font-weight: 600; }
+.t-var     { color: var(--sky-300); }
+.t-prop    { color: var(--sky-200); }
+.t-str     { color: #86efac; } /* green-300 for strings */
+
+/* ── Scroll hint ── */
+.hero__scroll-hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 64px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(6px); }
+}
+
+@media (max-width: 900px) {
+  .hero__inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .hero__visual { order: -1; }
+  .hero { padding: 120px 0 64px; }
+}
+
+@media (max-width: 480px) {
+  .hero__ctas { flex-direction: column; }
+  .hero__ctas .btn { width: 100%; justify-content: center; }
+}
