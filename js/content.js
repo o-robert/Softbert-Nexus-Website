@@ -55,7 +55,7 @@ const DEFAULT_CONTENT = {
     heading: "Let's Build Together",
     subheading: "Have a project in mind or just want to explore options? We'd love to hear from you.",
     email: "hello@softbertnexus.com",
-    phone: "+234 810 659 7038",
+    phone: "+234 708 096 1146",
     address: "Softbert Nexus Limited, Lagos, Nigeria",
     formLabels: {
       name: "Your Name",
