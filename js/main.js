@@ -43,14 +43,15 @@ function renderSite(c) {
   const sHead = el("services-heading");
   if (sHead) {
     const parts = c.services.subheading.split(".");
-    sHead.innerHTML = parts[0].trim() + (parts[1] ? `.<br /><span class="gradient-text">${parts.slice(1).join(".").trim()}</span>` : "");
+    sHead.innerHTML = parts[0].trim() + (parts[1] ? `.<br /><span class="accent-text">${parts.slice(1).join(".").trim()}</span>` : "");
   }
 
   // Services grid
   const grid = el("services-grid");
   if (grid) {
     grid.innerHTML = c.services.items.map((item, i) => `
-      <div class="service-card fade-in-up stagger" style="--i:${i}">
+      <div class="service-card fade-in-up" style="--i:${i}">
+        <span class="service-card__num">${String(i + 1).padStart(2, "0")}</span>
         <div class="service-card__icon">${ICONS[item.icon] || ICONS.code}</div>
         <h3 class="service-card__title">${escHtml(item.title)}</h3>
         <p class="service-card__description">${escHtml(item.description)}</p>
@@ -66,7 +67,7 @@ function renderSite(c) {
   const aHead = el("about-heading");
   if (aHead) {
     const parts = c.about.subheading.split(".");
-    aHead.innerHTML = parts[0].trim() + (parts[1] ? `.<br /><span class="gradient-text">${parts.slice(1).join(".").trim()}</span>` : "");
+    aHead.innerHTML = parts[0].trim() + (parts[1] ? `.<br /><span class="accent-text">${parts.slice(1).join(".").trim()}</span>` : "");
   }
   setText("about-body", c.about.body);
 
@@ -112,7 +113,8 @@ function renderSite(c) {
 
   // Footer
   setText("footer-tagline",   c.footer.tagline);
-  setText("footer-copyright", c.footer.copyright);
+  const copyrightText = c.footer.copyright.replace(/\d{4}/, new Date().getFullYear());
+  setText("footer-copyright", copyrightText);
 }
 
 // ── Escape HTML ──
@@ -184,16 +186,23 @@ function initScrollAnimations() {
   targets.forEach(t => observer.observe(t));
 }
 
-// ── Contact form (front-end only) ──
+// ── Contact form — Web3Forms delivery ──
+// To activate: get your free access key at https://web3forms.com (enter hello@softbertnexus.com)
+// Then replace WEB3FORMS_ACCESS_KEY below with the key emailed to you.
+// For production CAPTCHA: replace the sitekey in index.html with your key from dash.cloudflare.com
+const WEB3FORMS_ACCESS_KEY = "f59521a1-3038-480a-a6a7-b56d22649d16";
+
 function initContactForm() {
   const form     = el("contactForm");
   const feedback = el("form-feedback");
   if (!form || !feedback) return;
 
-  form.addEventListener("submit", (e) => {
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
+
     const name    = form.querySelector("#form-name").value.trim();
     const email   = form.querySelector("#form-email").value.trim();
+    const subject = form.querySelector("#form-subject").value.trim();
     const message = form.querySelector("#form-message").value.trim();
 
     if (!name || !email || !message) {
@@ -202,16 +211,52 @@ function initContactForm() {
       return;
     }
 
-    // Simulate submission
+    // Reject if honeypot was filled (bot detected)
+    const botcheck = form.querySelector('[name="botcheck"]');
+    if (botcheck && botcheck.checked) return;
+
+    // Require CAPTCHA token — uncomment when Turnstile sitekey is set in index.html
+    // const captchaToken = form.querySelector('[name="cf-turnstile-response"]')?.value;
+    // if (!captchaToken) {
+    //   feedback.textContent = "Please complete the CAPTCHA before submitting.";
+    //   feedback.className = "form-feedback error";
+    //   return;
+    // }
+    const captchaToken = form.querySelector('[name="cf-turnstile-response"]')?.value || "";
+
     const btn = el("form-submit");
     if (btn) { btn.textContent = "Sending…"; btn.disabled = true; }
+    feedback.textContent = "";
+    feedback.className = "form-feedback";
 
-    setTimeout(() => {
-      feedback.textContent = "Message sent! We'll get back to you soon.";
-      feedback.className = "form-feedback success";
-      form.reset();
+    try {
+      const payload = new FormData();
+      payload.append("access_key",            WEB3FORMS_ACCESS_KEY);
+      payload.append("name",                  name);
+      payload.append("email",                 email);
+      payload.append("subject",               subject || "New enquiry from Softbert Nexus website");
+      payload.append("message",               message);
+      payload.append("from_name",             "Softbert Nexus Website");
+      payload.append("replyto",               email);
+      payload.append("cf-turnstile-response", captchaToken);
+
+      const res  = await fetch("https://api.web3forms.com/submit", { method: "POST", body: payload });
+      const json = await res.json();
+
+      if (json.success) {
+        feedback.textContent = "Message sent! We'll be in touch soon.";
+        feedback.className = "form-feedback success";
+        form.reset();
+        if (window.turnstile) window.turnstile.reset();
+      } else {
+        throw new Error(json.message || "Submission failed.");
+      }
+    } catch (err) {
+      feedback.textContent = "Something went wrong — please email us directly at hello@softbertnexus.com";
+      feedback.className = "form-feedback error";
+    } finally {
       if (btn) { btn.textContent = "Send Message"; btn.disabled = false; }
-    }, 1200);
+    }
   });
 }
 
